@@ -1,0 +1,906 @@
+首先，今天成功安装了Vagrant ubuntu 的图形界面；
+
+vagrant download PC 版本
+
+install cmder； 很好用的工具，看起来酷炫的command tool；
+
+after downloading vagrant 
+
+find boxes; install ubuntu/trusty64;
+
+cd 到安装目录;
+
+vagrant box ubuntu/trusty64
+
+initialization :  vagrant init ubuntu/trusty64
+
+
+vagrant up  to open the vagrant terminal;
+
+vagrant ssh to connect to the virtual machine(Virtual Box);
+
+但是bittiger给了一个有图形界面的方案： 
+git clone https://github.com/bittiger-java/vagrant-workstation.git
+cd vagrant-workstation
+vagrant up
+
+安装结束以后： vagrant reload
+
+Vagrant username & password both: vagrant; 
+
+在Ubuntu下安装IntelliJ： 
+
+先安装IntelliJ tar.gz文件，然后解压缩；
+
+然后command命令到安装路径/home/vagrant/Desktop/IntelliJ/idea-IU-182.4505.22/bin;
+在该目录下执行./idea.sh 去安装即可； 
+
+安装oh my zsh： https://github.com/robbyrussell/oh-my-zsh；
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+安装完之后
+ls -al
+有.zshrc
+
+pwd 当前路径；
+vim .zshrc
+alt + x or i : 插入和删除；
+
+重新打开terminal  会出现乱码；
+
+之后搜索powerfonts；
+https://github.com/powerline/fonts
+
+安装到workspace里面
+之后进入fonts目录； 执行sh ./install.sh
+
+之后点edit-preference修改字体和字体大小和背景颜色；
+
+用Maven实现hello world的print；
+
+
+开发一个spring boot 的application； 
+
+引入dependency；引入一个starter dependency;
+Spring application 引入很多的dependency；
+
+Spring starter POM web
+
+Spring；
+spring.boot.starter-web
+
+引入什么dependency要看文档。。。
+
+spring starter；
+
+
+9.28：
+
+
+Video： From Zero to Hero with Spring Boot - Brian Clozel；
+
+ls -al
+
+
+compile： mvn clean install
+
+run: 
+
+java -jar xxx.jar
+
+class, annotation, 没有任何的部署，没有任何的代码； 8080端口Tomcat已经在run了；
+
+
+ctrl + c 退出 ； 
+
+ctrl + r back index search；
+
+Location service  running location service
+
+IntelliJ使用小技巧： 
+
+lombok instead of setter & getter;
+annotation 可以自动生成getter & setter； 
+
+maven 里面的叫dependency 不叫plugin；
+
+lombok这个plugin是intellij的plugin；
+Spring不仅帮助处理query还帮忙分页；
+
+重点1： （Annotation: @Autowired  
+
+spring dependency injection 依赖注入；三种方法
+不需要new之类的东西，直接注入进来，不需要是怎么生成的直接注入就可以了；
+
+1.constructor injection 
+
+2.setter injection
+
+3.field injection;@autowired
+
+Controller mvc里面； 
+
+lombok conflict with getter & setter 
+
+will use  getter & setter;
+spring 可以定制application 的启动端口； 
+
+application.yml
+
+postman: 
+后端工程师测试是否work， 用postman测试前段是否work
+HTTP的各种请求；
+
+postman
+Jsonview有层次感；
+
+Annotation的使用方法： 
+
+看Annotation中包含哪些field；看一下Annotation 的文档；
+
+REST controller；
+常见的Annotation要记住；
+@component @service @
+当spring 启动时，spring container会扫描这些Annotation；
+被Annotation标记的这些class，spring会生成这些bean；然后会把bean放在container里面；
+然后做dependency injection的时候这些bean就是available；所以有时候缺少bean运行不成功；
+
+Annotation只是告诉spring， 这些东西你要扫描； 是否要注入要取决于code；
+
+Annotation RestController 和 Controller 的区别
+
+@service标记class为一个service class； spring scan 所有的标记； 然后生成所对应的bean；
+
+看项目文档，如何用maven引入dependency；
+
+传统的三层架构：
+view
+service
+access
+前后端分离开来是传统的架构；
+
+10-01:
+
+What is WebSocket?(WebSocket是一个协议)
+HTTP不支持push； 
+
+每隔10秒钟从client 端发送请求到server端；（Basic pulling）非高效
+
+WebSocket is a computer communications protocol, providing full-duplex（全双工） communication channels over a single TCP connection.
+
+Why do we need WebSocket?
+	Think about HTTP
+	Pull only
+How to enable "push" function without WebSocket?
+
+WebSocket and HTTP:
+The WebSocket Protocol is an independent TCP-based protocol. Its only repationship to HTTP is that its handshake is interpreted by HTTP servers as an Upgrade request
+
+Two way communication;
+
+WebSocket Programming model:
+Server;
+Client;
+
+Compare WebSocket with REST
+1.REST
+	Many URLs, handful of verbs, links stateless
+2.WebSocket
+	a WebSocket application may use a single URL only for the initial HTTP handshake. All messages thereafter share and flow on the same TCP connection. This points to an entirely different,asynchronous, event-driven,messaging architecture. 
+
+Messaging Architecture:
+WebSocket does imply a messaging architecture but does not mandate the use of any specific messaging protocol. It is a very thin layer over TCP that transforms a stream of bytes into a stream of messages(either text or binary) and not much more. It is up to applications to interpret the meaning of a message.
+
+Low level protocal, like Servlet; 
+
+STOMP:
+	Simple Text Oriented Messaging Protocol;(STOMP)
+	STOMP is a simple interoperable protocol designed for asynchronous message passing between clients via mediating servers. It defines a text based wire-format for messages passed between these clients and servers;
+
+How to use STOMP over WebSocket?
+
+1.var url = "ws: //localhost:61614/stomp";
+  var client = Stomp.client(url);
+
+2.<script src = > 
+	var
+	var client = 
+	</script>
+
+When to use WebSocket?
+	client and server need to exchange events at high frequency and low latency
+	What about high frequency with high latency?
+	what about low frequency with low latency?
+
+Socket 与WebSocket
+
+WebSocket是在网络下的socket，设计原理类似； 
+
+Spring WebSocket
+
+Message flow with WebSocket Message Broker
+
+The HAL browser;
+HAL browser如果只能用dependency；
+postman是一个general 的HTTP 的client；
+
+Docker rather than MongoDB； 
+
+@Configuration
+@EnableWebSocketMessageBroker
+public class WebSocketConfig implements WebSocketMessageBrokerConfigure{
+	
+}
+
+什么时候选择MySQL database？ 什么时候选择NoSQl database？
+选择MySql： 
+1.如果对transactional 有要求的，
+
+2.如果对Structural Data
+
+3.如果data volumn 不是很大，对transactional要求很高；
+
+选择NoSQL：
+1.NoSQL 处理比较大的数据； 扩展性比较好；MongoDB等；
+2.处理No-structural data比较好；
+
+学习新的数据存储： 
+如何学习一个新的数据存储，两个方面去学习:
+
+数据是怎么存的？
+数据是怎么查询或者是取的？
+
+Message Delivery Guarantee：
+At least once; 
+at most once;
+exactly once;
+
+
+HTTP的大概过程：
+send/request 一个HTTP的请求；
+
+写method 加与不加final 的区别
+
+implements & extend 的区别； 
+
+yml 用的很多进行配置 .yml
+
+10-2:
+
+mysql_basic.sh
+
+#login from commandline
+mysql --host=127.0.0.1 --port=3306 --user=root --password=root
+
+#show all available databases
+show databases
+
+#create a db named test1
+CREATE DATABASE test1;
+
+#use the specified db as the selected db
+USE test1;
+
+#show the selected db
+select databse();
+
+#show table in selected db
+show tables;
+
+#show contents from selected table
+select * from <table_name>;
+
+#drop the db named test1
+drop database if exists test1;
+
+application.yml
+server:
+	port:9000
+spring:
+	application:
+		name: running-information-analysis-service
+	datasource:
+		url:jdbc:mysql://localhost:3306/running_information_analysis_db
+		username:root
+		password:root
+	jpa:
+		hibernate:
+			ddl-auto:update
+
+10-3： 
+
+Microservices & Cloud Native Java Applications
+
+Spring Data REST for all your REST APIs?
+什么情况下可以用Spring Data REST？
+简化了中间的service和controller这一层；
+只适用增删检查之类的操作，不适合其他操作； 
+
+
+MongoDB： NoSQL和MySQL的应用场景也是不一样的；
+NoSQL的应用场景：
+
+MongoDB的应用场景：是NoSQL，存储于非结构化的存储结构里面；
+没有schema的；
+
+Messaging Queue： 消息队列；
+消息队列可以有几种功能：解耦，异步需求：；
+
+什么时候需要异步操作：
+submitting a report；
+WebSocket：high frequency， low latency；
+
+WebSocket第一步要建立连接；连接时候要占用一定的资源；
+
+Agenda：
+Monolithic Application 单一应用
+12 Factor Application
+Microservices, Microservices;
+Cloud Native Java Application
+Spring Cloud
+Netflix OSS
+Build Pipeline
+Continuous Delivery 持续交付
+DevOps  
+Road to CTO
+
+
+Monolithic Application: giant
+把所有的东西都放在一堆里面；
+
+Monolithic Application:
+	A monolithic application is self-contained and independent from other computing applications;
+
+an example of monolithic application? 
+网页小游戏，在线播放器：UI和逻辑混在一起；
+Monolithic Application:
+Presentation;--Browser
+Business
+Data Access -- Database
+
+Pros:
+	Simple at first
+	In-process latencies
+	Single codebase, deployment unit
+	Resource-efficient at small scale
+Cons:
+	Communication gap and coordition overhead as application grows
+	Poor Enforcement of modularity
+	Only vertically scaling
+	Downtime，deployment failures
+	Long build time
+	Hard to manage;
+
+People are still building Monolithic Applicaiton
+
+12 Factor Application: 
+What is 12 Factor Application:
+	
+	Methodology for building software-as-a-service apps
+	软件看做一个服务；提供各种各样的服务；
+	Declarative formats for setup automation
+	声明试的格式（不用改动code，不用增加特定的逻辑来处理）去处理不同环境
+	Maximum portablity between execution environments
+	同一个code 不同的config可以进行切换
+	Suitable for deployment on modern platforms
+	Minimize divergence between development and production
+	Scale up easily
+
+12 Factor Application:
+1.Codebase
+	One codebase tracked in revision control, many deploys
+2.Dependencies
+	Explicitly declare and isolate dependencies
+3.Config
+	Store config in the environment
+4.Backing services
+	Treat backing services as attached resources
+5.Build, Release,run
+	Strictly separate build and run stages;
+6.Processes
+	Execute the app as one or more stateless processes
+无状态：1.不要保存user sessing信息；2. 将信息转化成token；只要有token就可以了；
+7.Port Binding： 不同的服务暴露给不同的端口；指定端口；
+	Export services via port binding
+8.Concurrency：并行： 避免在线程级别进行concurrency； 在进程做concurrency是比较好的；
+	Scale out via the process model
+
+9.Disposability 启动和停止要断开，不能依赖于某个文件去做这些；
+	Maximize robustness with fast startup and graceful shutdown;
+10.Dev/Prod parity： Production 的数据引流，可以通过MQ来做；request进来之后
+通过MQ去balance，将流量已引入staging environment里面，staging environment会模拟一个流量的入口；
+	Keep development, staging and production as similar as possible;
+11.Logs： logs当做event streams处理，logs要异步；或者直接将logs异步地去写；
+	Treat logs as event streams 
+12.Admin processes
+	Run admin/management tasks as one-off processes
+Spring Boot + 12 Factor App = AWESOME! 
+
+Backend 架构：
+Microservice； monolithic； SOA； 
+Microservice 现在在互联网公司用的很多； 传统公司在往Microservice方向进行迁移；
+
+Microservices:
+the term "Microservice Architecture" has sprung up over the last few years to describe a particular way of designing software applications as suites of independently deployable services. While there is no precise definition of this architectural style. there are certain common characteristics around organization around business capability, automated deployment,intelligence in the endpoints, and decentralized control of languages and data. 
+
+Is XML RPC Microservices?
+RPC: Remote Procedure Call;
+在程序里有一个方法,方法叫call some service； 然后发一个XML service，解析XML然后反馈回来；SOAP也算是XML RPC的一种；
+
+Yes and No
+	Technology Coupling;
+	Local Calls Are Not Like Remote Calls;
+
+SOA- Service Oriented Architecture;
+
+Is RESTful API Microservices?
+Is gRPC Microservices?  Yes
+
+What is gRPC?  Why gRPC?
+	Open source HTTP/2-RPC framework;
+	Motivation;
+
+Why gRPC?
+	multi-language, multi-platform framework
+	Transport over HTTP/2 +TLS
+	C/C++ implementation goals;
+
+Spring Cloud & gRPC
+
+Microservice:
+Pros:
+	Small? relatively small
+	Single, focused purpose;
+	Independently deployable;
+	Independently scalable ,resilient;
+	Independent technology stack;
+
+Cons:
+	Distributed architecture is not easy;
+	Refactoring across service boundaries;
+	Interface changes are challenging;
+	Operational Challenges;
+
+How to design Microservices(Netflix Princples)
+	Modeled around business domain;
+	Decentralize all things;
+	Deploy Independently;
+	Design for Failure;
+	Highly Observable;
+	Hide Implementation;
+	Culture of Automation;
+
+Implementing Microservice is hard; 
+
+Any organization that designs a system will inevitably produce a design whose structure is a copy of the organization's communication structure.
+
+Common Problems:
+	How do we wire our services together?
+		Components in a monolithic system communicate through a simple method call. But components in a microservice system likely communicate over the network through REST, web services or some RPC-like mechanism.
+
+		How to manage configurations?
+		How to discover services?
+		How to avoi avalanche?
+		Leadership election problems
+		How to do distributed tracing and logging?
+		How to do event streaming?
+		How to do global authentication?
+
+Cloud Native Java Applciation
+Cloud Native >Microservices
+
+Microservices are only a small part of a large picture; 
+
+Cloud Native Ops
+Container;
+Virtual Machine;
+Spring Boot Roles
+
+Here comes Spring Cloud
+What is Spring Cloud?
+Why is Spring Cloud?
+
+Do you still remember common problems of distributed systems?
+Spring Cloud comes to rescue developers:
+	Reduce boilerplate code
+	Quickly setup services and applications that implement those patterns
+	Same code ,work anywhere;
+
+Spring Cloud:
+	Distributed/versioned configuration
+	Service registration and discovery
+	Routing
+	Service-to-service calls
+	Load balancing
+	Circuit breakers
+	Global locks
+	Leadership election and cluster state
+	Distributed messaging;
+
+Spring Cloud Config;
+Spring Cloud Netflix;
+Spring Cloud Sleuth;
+
+1.Spring Cloud Netflix:
+Eureka： 服务发现和注册；application service；
+Hystrix：Defend your app
+Ribbon
+Zuul：routing；帮助解决跨域访问的问题；
+
+Build Pipeline：
+Continuous Integration（CI）Why CI？
+
+CI：Jenkins，
+
+Continuous Delivery（CD）
+RestTemplate: 发送同步的REST请求或者HTTP请求；
+看Spring文档了解RestTemplate具体怎么用；
+
+getForObject
+@Slf4j
+postForObject
+
+Spring Cloud： 
+Eureka server & Eureka client;
+
+@EnableDiscoveryClient; 
+MicroService:
+
+Spring cloud 屏蔽了一些具体的服务的发现和注册的细节；
+
+启动Eureka：
+sh ./start-eureka.sh
+
+打开localhost:8761
+
+启动mq docker-compose up
+
+sh ./start-location-simulator.sh
+sh ./start-location-distribution.sh
+
+Hystrix: 防止一个服务挂掉把其他服务也挂掉；
+
+Hystrix dashboard;
+是spring boot的application
+@EnableHystrixDashboard
+
+sh. ./start-hystrix.sh
+
+port: 7979
+localhost:7979;
+
+localhost:9005/hystrix.stream
+Eureka: 用服务的名字，而不是用具体的URL或者端口来做服务之间的互相的调用；
+Eureka用来服务的注册和发现； 
+
+mvn clean install 说明代码本身编译是有问题；
+
+runtime时候报错又分几种：
+启动Microservice； 有可能Microservice本身的配置或者端口的冲突；
+
+
+spring cloud sleuth; 
+做Microservice里面做aggregation；Tracing & logging； 
+
+Debug非常复杂； Microservice里面debug； 
+
+1.1 mvn clean install; 
+error -> compile time error  -> syntax error, dependency issue;
+
+2.1 service1  java -jar service1.jar  Single Service Runtime Error
+error -> 
+		2.1.1 spring configuration issue. Component scan @component , @sercive, @RestController,  @Controller ...
+		help to generate the bean;   
+		@autowired service1 service1 spring startup failed xxx bean cannot be injected, found;@Service; 
+		2.1.2 Address used: 端口被占8080； —>change port number; 
+		2.1.3 runtime 时候发现runtime dependency issue runtime 
+		ClassNotFound Exception.  ClassCastException.  NotFoundException; 
+		需要看dependency 是否有问题；
+			-> check document and change version number; 
+			-> look up whether this dependency can be managed by Spring boot or spring cloud; 
+
+3.1 service1 no problem,  service2 no problem;  service1 -> service2 Error 
+Service1 call Service2 method , problems occur;
+
+how to solve: logging, logging, logging; 
+		3.1.1 Before Service1 calls Service2, do logging; Check log;
+		3.1.2 made call but got error response. after service call finished, do logging; service 2,  network issue like timeout;  check log; 
+
+
+service1=service1, service2, service3
+service2=service1, service2, service3
+service3=service1, service2, service3
+
+how can I know all service1 logs among all the servers???
+share drive -> service1.log
+what problem is Database solving here? 
+1.查询的时候特别难查； 
+log.info("Exception happened " + e.printstacktrace())
+logRepository.save(Logentity)
+LOG_MSG 
+Log没有办法Structure
+
+log是要存的； 
+Splunk都是和log 相关的；
+ELK = Elastic Search + Logstash +Kibana；
+
+log pipeline/ log stream -> Kafka ->log message logging service -> datastore,indexing,searching
+
+@Embeddable VS @Entity? 
+都是JPA的Annotation；
+关系： 抽象来说： 
+Dependent VS Independent
+Dependent: 这两个对象之间是相互依赖的关系，有些对象和class是没法单独存在的，必须依附于一个class存在的；
+Independent: 可以互相独立存在的；
+
+In OO relationship
+	a dependent object is considered an aggregate or composite association.
+dependent & Independent
+
+In relational model
+	The dependent object could have its own table
+	Its data could be embedded in the indenpendent object's table. Another word to say the dependent data is included in the independent object's table 
+
+从关系型模型转化成面向对象模型
+From relational model -> OO relationship: 
+或者两个模型如何对应起来；
+
+ORM Object Relation Mapping 用来bridge OO模型和关系模型；
+
+如何实现ORM mapping： 
+用Jpa 还有hibernate ; 
+
+Jpa : Japa persistence api;
+
+两个table 可以有关系；
+关系模型中可以有哪几种关系？
+表和表之间的关系：  
+1-1， 1-many， many-1， many-many；
+一  多
+
+foreign key
+
+Embeddable object: 
+Can not be directly persisted , or queried , it can only be persisted or queried in the context of the source object in which it is embedded. 
+Does not have an id or table
+
+User and Address;
+Which class depends on which class ?
+Address depends on User
+User is independent on address
+Address can be embedded in User
+Address is embeddable; 
+
+User:
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class UserEntity{
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String username;
+	@Embedded
+	private Address address;
+}
+
+Address:
+import lombok.AllArgsConstructor;
+import javax.persistence.Embeddable;
+
+@Embeddable
+@AllArgsConstructor
+public class Address{
+	private String line1;
+	private String line2;
+	private String city;
+
+}
+
+Design Decision
+Dependent vs Independent
+Join tables
+Query independently？
+Load data all the time ? 如果load user 时候，always 需要load address的时候，就需要embeddable
+ 
+
+ If dependent, we can use or not use embeddable; 
+
+
+How to do in two entities? 
+
+UserEntity:
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.List;
+
+@Entity
+@Table(name = "USER_ENTITY")
+public class UserEntity{
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String username;
+	@OneToMany(mappedBy = "user")
+	private List<AddressEntity> addressList;
+}
+
+AddressEntity.java
+
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class AddressEntity{
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String line1;
+	private String line2;
+	private String city;
+
+	@ManyToOne
+	private UserEntity user;
+}
+
+Relationship between JpaRepository, PagingAndSortingRepository, CrudRepository
+
+JpaRepository is an interface not class; 
+
+PagingAndSortingRepository, CrudRepository are all interfaces;
+
+Java support 多继承？ 不支持多继承；
+
+一个class可不可以implement多个interface？ 可以
+
+JpaRepository extends PagingAndSortingRepository extends CrudRepository；
+
+最根的是CrudRepository 其次是PagingAndSortingRepository；
+
+JpaRepository:
+void flush();
+<S extends T> S saveAndFlush(S entity);
+void deleteInBatch(Iterable<T> entities);
+void deleteAllInBatch();
+
+
+PagingAndSortingRepository
+Iterable<T>findAll(Sort sort);
+Page<T> findAll(Pageable pageable);
+
+CrudRepository
+Interface for generic CRUD operations on a repository for a specific type;
+
+Docker 里的MongoDB 是怎么和我们的restAPI connect上的？ 通过POM引进的Dependency？
+
+IDE 和maven不一样；
+离开IDE可以写代码；
+
+
+是不是引入了一个dependency之后就一定可以接入？
+Spring Data REST；
+
+OR mapping 是Jpa做的，不是Spring data做的
+
+What is Spring Data?
+基于Spring框架开发的一套数据访问接口，使代码更简单，对关系型数据和菲关系型数据都可以访问；
+Spring Data is Data Access Abstraction;
+数据访问抽象；
+Spring Data提供了Repository；
+Spring Data只负责数据访问；本身也不会帮忙生成REST API； 不会提供REST API；
+这时候REST API与SPring Data之间有沟；最常见的是Spring data repository 上面有service，然后上面有API；
+调用顺序:当一个REST请求到达Spring的时候，REST API先去接受请求，在REST Controller的method里面会去调用Service，Service会调用Repository， Repository是extends Jpa repository， 然后Spring data会接管做数据访问，然后Spring Data会连接到MongoDB上，然后把真正的东西存到MongoDB上；
+
+Spring JDBC
+
+JDBC template是Spring对于JDBC的一个封装；
+Java开发一些有用的知识
+
+What is Spring Data REST?
+Spring Data本身是不提供REST API； 如果要使用REST API，那么需要Spring Data REST；
+
+什么时候使用Spring Data Rest？
+省略了中间的service layer 和controller layer； Spring Data Rest提供增删改查 四种API的情况下，没有复杂逻辑的情况下可以使用Spring Data REST，没有复杂的逻辑可以用Spring Data REST；
+
+但是对于一般的公司应用有业务逻辑和web service调用；大型的企业开发Spring Data REST 暂时还不是一个最佳选择；
+
+Spring Data REST只能帮忙简化增删改查的操作；具体的还需要自己写；
+
+
+Maven VS Gradle 常见的Java的dependency management tool；
+
+Gradle要踩得坑比较多；
+Maven是用XML去management dependency；
+去把dependency声明一下，然后去从repository把dependency下载回来；
+
+Spring是拿Gradle manage dependency的； 
+maven更成熟一些，踩得坑少一些；
+
+import javax.persistence.Entity
+import org.springframework.data.mongodb.core.mapping.Document;
+
+spring boot 和mysql交互的流程：
+1.安装docker sql，配置好（建立数据库和表格，插入数据）
+
+2.配置好spring， 主要是指resource/application.yml文件，配置datasource(url,username,password,driver-class-name)
+配置好Spring不是用户来做的，是spring boot来做的， 当maven引入dependency之后，spring boot 会找到dependency， 根据yml， data source提供的参数，自动帮忙配置spring； convention over configuration； 简化了配置；
+Application.yml只是提供spring boot配置时候的参数； 真正的配置是由spring boot配置额
+会根据yml， DataSource中的一些参数去配置好； 
+
+domain object， repository，  repository上面有service； 
+
+3.Spring项目中package domain中定义repository，package service中定义service。 Repository可以自动实现CRUD，service调用repository。如果有package rest，那么rest调用Service
+
+service是实现所有业务逻辑的地方； 
+
+4.Spring项目中domain定义所有的变量及Jpa，MongoDB等相关的repository。
+
+maven中pom写build时候引入了一个plugin；写了一个spring-boot-maven-plugin，然后才能把application打包成一个jar file，一个fat jar； 然后里面有embedded tomcat ，然后才能单独启动，把Microservice当做一个基石；
+
+看spring文档，文档document写的很好；
+http://docs.spring.io/spring/docs/current/spring-framework-reference/html/single
+
+1.Container overview；
+2.Spring IoC container；
+3.Container metadata
+
+dependency injection 1.4.1；
+
+Bean scopes
+
+customizing the nature of a bean 可以省略
+
+1.9Annotation-based container configuration；
+
+Resources：
+Resources load 的格式；
+
+Validation，data binding 和type conversion用到的时候再看；
+
+Data Access
+Transaction management；
+Using
+ @tranactional 
+
+ transaction management；
+
+ MVC： Implementing controllers； Controllers 是整个REST API的入口；
+
+ Spring Boot document
+ Starter-POM；
+还有kafka的文档； 
+
+书一般会比较过时； 
+
+Service Layer 与Microservice 是不同领域的东西；
+Microservice是架构上的概念；
+Service Layer是design方面的东西；
+
+一个比较好的问问题的方式： 
+要说出自己的理解；然后获得老司机的纠正；
+
+Communication Skills； 
+
+虽然mysql是在docker container里面； mysql端口只在container能用；
+但是container里面加了port forwarding，将mysql的端口转发到了host的端口上，即ubuntu的端口上；
+
+Docker启动时的参数 -p; 
+
+
+
+
+
+
+
+
+
